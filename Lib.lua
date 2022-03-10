@@ -45,6 +45,15 @@ function Library:Construct(name)
 		end;
 	}
 	local Lib = internal.loadguiasset(9062053213, game.Players.LocalPlayer.PlayerGui)
+	
+	local Mouse = game.Players.LocalPlayer:GetMouse()
+	
+	Mouse.KeyDown:Connect(function(key)
+		if key == "z" then 
+			Lib.Main.Visible = false
+		end
+	end)
+	
 	Lib.Loader.Hello.Text = "Hello, "..game.Players.LocalPlayer.Name 
 	Lib.Loader.HubName.Text = name 
 	local function Intro()
