@@ -133,7 +133,7 @@ function Library:Construct(name)
             end
 	
 	    if rainbowtext == true then 
-		rainbowText(TabButton)
+		rainbowText(TabButton.T)
 	    end
                                         
             Page.ChildAdded:Connect(UpdateSize)
