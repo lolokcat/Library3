@@ -131,10 +131,12 @@ function Library:Construct(name)
                 local contentsize = Page.UIListLayout.AbsoluteContentSize
                 Page.CanvasSize = UDim2.new(0,contentsize.X,0,contentsize.Y)
             end
-	
-	    if rainbowtext == true then 
-		rainbowText(TabButton.T)
-	    end
+		
+	    spawn(function()
+		    if rainbowtext == true then 
+			rainbowText(TabButton.T)
+		    end
+	    end)
                                         
             Page.ChildAdded:Connect(UpdateSize)
             
