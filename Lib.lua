@@ -13,6 +13,41 @@ local function CheckIfLoaded()
     end
 end
 
+function rainbowText(textLabel)
+    if textLabel.ClassName == "TextLabel" then
+        textLabel.RichText = true
+
+        local s = textLabel.Text
+        local frequency = 1 -- determines how quickly it repeats
+        local totalCharacters = 0
+        local strings = {}
+
+        for character in string.gmatch(s, ".") do
+            if string.match(character, "%s") then
+                table.insert(strings, character)
+            else
+                totalCharacters += 1
+                table.insert(strings, '<font color="rgb(0, 0, 0)">')
+                table.insert(strings, character..'</font>')
+            end
+        end
+
+        while task.wait() do
+            local str = ""
+            local counter = totalCharacters
+            for _, sub in ipairs(strings) do
+                if string.match(sub, "%a+%b()") then
+                    counter -= 1
+                    local color = Color3.fromHSV(-math.atan(math.tan((os.clock() + counter/math.pi)/frequency))/math.pi + 0.5, 1, 1)
+                    sub = string.gsub(sub, "%a+%b()", "rgb("..math.floor(color.R * 255)..", "..math.floor(color.G * 255)..", "..math.floor(color.B * 255)..")")
+                end    
+                str ..= sub
+            end
+            textLabel.Text = str
+        end
+    end
+end
+
 CheckIfLoaded()
 
 function Library:Construct(name)
@@ -84,7 +119,7 @@ function Library:Construct(name)
     Intro()
     
     local TabLibrary = {
-        new = function(name)
+        new = function(name, rainbowtext)
             name = name or "Button"
             local Page = internal.loadguiasset(9057623746, Lib.Main.Pages)
             local TabButton = internal.loadguiasset(9057919587, Lib.Main.Tabs)
@@ -96,6 +131,10 @@ function Library:Construct(name)
                 local contentsize = Page.UIListLayout.AbsoluteContentSize
                 Page.CanvasSize = UDim2.new(0,contentsize.X,0,contentsize.Y)
             end
+	
+	    if rainbowtext == true then 
+		rainbowText(TabButton)
+	    end
                                         
             Page.ChildAdded:Connect(UpdateSize)
             
