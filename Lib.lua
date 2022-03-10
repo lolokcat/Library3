@@ -161,6 +161,7 @@ function Library:Construct(name)
                         local Container = DropdownFrame.Container
                         
                         local Selected = DropdownButton:WaitForChild("Selected")
+			Selected.TextWrapped = false
                         
                         local Toggled = false
                         
