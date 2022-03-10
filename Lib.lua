@@ -132,6 +132,8 @@ function Library:Construct(name)
                 Page.CanvasSize = UDim2.new(0,contentsize.X,0,contentsize.Y)
             end
 		
+	    TabButton.T.Text = name	
+	
 	    spawn(function()
 		    if rainbowtext == true then 
 			rainbowText(TabButton.T)
@@ -139,8 +141,6 @@ function Library:Construct(name)
 	    end)
                                         
             Page.ChildAdded:Connect(UpdateSize)
-            
-            TabButton.T.Text = name
             
             TabButton.MouseButton1Down:Connect(function()
                 for index,page in next,Lib.Main.Pages:GetChildren() do
