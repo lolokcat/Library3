@@ -34,7 +34,7 @@ function Library:Construct(name)
 				return object
 			else
 			    warn(err)
-go to 			    return false
+			    return false
 			end
 		end;
 		tweenasset = function(asset, propertiestable, info)
