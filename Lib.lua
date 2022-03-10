@@ -34,7 +34,7 @@ function Library:Construct(name)
 				return object
 			else
 			    warn(err)
-			    return false
+go to 			    return false
 			end
 		end;
 		tweenasset = function(asset, propertiestable, info)
@@ -50,7 +50,7 @@ function Library:Construct(name)
 	
 	Mouse.KeyDown:Connect(function(key)
 		if key == "z" then 
-			Lib.Main.Visible = false
+			Lib.Main.Visible = not Lib.Main.Visible
 		end
 	end)
 	
@@ -179,7 +179,7 @@ function Library:Construct(name)
                             if Toggled == true then
                                 for i,v in pairs(DropdownButton:GetChildren()) do 
                                     if v:IsA("TextLabel") then 
-                                        internal.tweenasset(v, {TextColor3 = Color3.fromRGB(203, 108, 30)}, TweenInfo.new(0.3))
+                                        internal.tweenasset(v, {TextColor3 = Color3.fromRGB(129,7,228)}, TweenInfo.new(0.3))
                                     end
                                 end
                                 DropdownFrame.Visible = true
