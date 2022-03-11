@@ -2,14 +2,14 @@ local Library = {}
 
 local function CheckIfLoaded()
     local function IsLoaded()
-      if game.Players.LocalPlayer.PlayerGui:FindFirstChild("Lib") then 
+      if game.CoreGui:FindFirstChild("Lib") then 
         return true
       else
         return false
       end
     end
     if IsLoaded() then 
-      game.Players.LocalPlayer.PlayerGui:FindFirstChild("Lib"):Destroy()
+      game.CoreGui:FindFirstChild("Lib"):Destroy()
     end
 end
 
