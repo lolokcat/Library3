@@ -79,7 +79,7 @@ function Library:Construct(name)
 			T:Play()
 		end;
 	}
-	local Lib = internal.loadguiasset(9062053213, game.Players.LocalPlayer.PlayerGui)
+	local Lib = internal.loadguiasset(9062053213, game.CoreGui)
 	
 	local Mouse = game.Players.LocalPlayer:GetMouse()
 	
