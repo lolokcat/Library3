@@ -13,6 +13,8 @@ local function CheckIfLoaded()
     end
 end
 
+CheckIfLoaded()
+
 function rainbowText(textLabel)
     if textLabel.ClassName == "TextLabel" then
         textLabel.RichText = true
@@ -47,8 +49,6 @@ function rainbowText(textLabel)
         end
     end
 end
-
-CheckIfLoaded()
 
 function Library:Construct(name)
     local function Default()
@@ -178,9 +178,19 @@ function Library:Construct(name)
                             if tog == true then 
                                 internal.tweenasset(Toggle.Frame, {BackgroundTransparency = 0.5}, TweenInfo.new(0.3))
                                 internal.tweenasset(Toggle.Frame1, {BackgroundTransparency = 0}, TweenInfo.new(0.3))
+				for i,v in pairs(DropdownButton:GetChildren()) do 
+                                    if v:IsA("TextLabel") then 
+                                        internal.tweenasset(v, {TextColor3 = Color3.fromRGB(129,7,228)}, TweenInfo.new(0.3))
+                                    end
+                                end
                             else
                                 internal.tweenasset(Toggle.Frame, {BackgroundTransparency = 0.5}, TweenInfo.new(0.3))
                                 internal.tweenasset(Toggle.Frame1, {BackgroundTransparency = 0.5}, TweenInfo.new(0.3))
+				for i,v in pairs(DropdownButton:GetChildren()) do 
+                                    if v:IsA("TextLabel") then 
+                                        internal.tweenasset(v, {TextColor3 = Color3.fromRGB(154,154,154)}, TweenInfo.new(0.3))
+                                    end
+                                end
                             end
                             callback(tog)
                         end)
